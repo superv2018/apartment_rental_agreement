@@ -1,22 +1,14 @@
-from django.db import model
+'''
+from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Landlord(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     social_security_number = models.CharField(max_length=255)
     email_address = models.CharField(max_length=255)
 
-
-class Tenant(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    address = models.CharField(max_length=255)
-    social_security_number = models.CharField(max_length=255)
-    email_address = models.CharField(max_length=255)
 
 class rentalProperty(models.Model):
     landlord = models.ForeignKey("Landlord", on_delete=models.PROTECT)
@@ -46,6 +38,7 @@ class rentalProperty(models.Model):
         choices = BUILDING_LISTING_CHOICES,
         default = CONDOMINIUM
     )
+    created_by = models.ForeignKey(User, related_name='rentalProperties')
 
 class Location(models.Model):
     rental_property = models.ForeignKey("rentalProperty", on_delete=models.PROTECT)
@@ -163,3 +156,4 @@ class Media(models.Nodel):
     apartment_pictures = models.ImageField()
     videos = models.CharField(max_length=512)
     virtual_tours = models.CharField(max_length=512)
+'''
