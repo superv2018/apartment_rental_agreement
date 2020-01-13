@@ -20,7 +20,7 @@ class Landlord(models.Model):
 
 
 class rentalProperty(models.Model):
-    landlord = models.ForeignKey("Landlord", on_delete=models.PROTECT)
+    landlord = models.ForeignKey("Landlord", related_name='rentalproperty', on_delete=models.PROTECT)
     created_by = models.ForeignKey(UserModel, related_name='rentalProperties', on_delete=models.PROTECT)
 
     PROPERTY_LISTING_CHOICES = Choices(
@@ -50,6 +50,8 @@ class rentalProperty(models.Model):
         default = BUILDING_LISTING_CHOICES.CONDOMINIUM,
     )
     
+    def __str__(self):
+        return self.type_of_building_choices
 
 class Location(models.Model):
     rental_property = models.OneToOneField("rentalProperty", related_name='location', on_delete=models.PROTECT)
@@ -59,6 +61,9 @@ class Location(models.Model):
     city = models.CharField(max_length=50)
     province = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.street
 
 class ApartmentBasicInfo(models.Model):
     rental_property = models.OneToOneField("rentalProperty", related_name='basic_info', on_delete=models.PROTECT)
@@ -95,6 +100,9 @@ class ApartmentBasicInfo(models.Model):
         default = APARTMENT_CONDITIONS_CHOICES.EXCELLENT,
     )
     apartment_conditions_freetext = models.TextField()
+
+    def __str__(self):
+        return self.title
 
 
 
@@ -164,8 +172,14 @@ class Contract(models.Model):
     insurance_required = models.BooleanField(default=True)
     other_terms = models.TextField()
 
+    def __str__(self):
+        return self.rent_availability
+
 class rentalImages(models.Model):
     rentalProperty = models.ForeignKey('rentalProperty', related_name='images', on_delete=models.PROTECT)
     apartment_pictures = models.ImageField()
+
+    def __str__(self):
+        return self.rentalImages
 
 

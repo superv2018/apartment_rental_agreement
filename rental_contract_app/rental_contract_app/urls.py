@@ -17,11 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
+app_name = 'rental_app'
+
 urlpatterns = [
     path('', views.HomePage.as_view(), name='home'),
-    path('admin/', admin.site.urls),
+    path('property_list/<int:pk>/', views.PropertyDetailView.as_view(), name='detail'),
+    path('property_update/<int:pk>/', views.PropertyUpdateView.as_view(), name='update'),
+    path('new_property/', views.CreateNewPropertyView.as_view(), name='new_property'),
+    path('property_list/', views.PropertyListView.as_view(), name='property_list'),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('test/', views.TestPage.as_view(), name='test'),
-    path('thanks/', views.ThanksPage.as_view(), name='thanks')
+    path('thanks/', views.ThanksPage.as_view(), name='thanks'),
+    path('admin/', admin.site.urls),
 ]

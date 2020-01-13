@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+<h1>Welcome to the Rental App advert Details Page</h1>
+<p> Username: {{ property_detail.user}}</p>
+<p> Address: {{ property_detail.address}}</p>
+<p> Social security number: {{ property_detail.social_security_number}}</p>
+<p> Email address: {{ property_detail.email_address}}</p>
+
+{% for property in property_detail.rentalproperty.all %}
+<p>{{ property.landlord}}</p>
+<p>{{ property.created_by}}</p>
+{% endfor %}
+</div>
+{% endblock %}
