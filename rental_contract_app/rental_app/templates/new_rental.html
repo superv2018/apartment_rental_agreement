@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+<h1>This is Rental View</h1>
+<form class="container" action="" method="post">
+    {% csrf_token %}
+    
+    {% include 'includes/form.html' %} 
+    <!--{{ form.as_p }}-->
+  
+  <a class="btn btn-primary" href="{% url 'rental_app:new_landlord' %}">Back</a>
+    <a class="btn btn-primary" href="{% url 'rental_app:new_apartment_info' %}">Next</a>
+    <input class="btn btn-primary" type="submit"></input>
+  </form>
+{% endblock %}

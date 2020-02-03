@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+<h1>Welcome to the Rental App advert Details Page</h1>
+
+{% for landlord in landlord_list %}
+<p> Username: {{ landlord.user}}</p>
+<p> Address: {{ landlord.address}}</p>
+<p> Social security number: {{ landlord.social_security_number}}</p>
+<p> Email address: {{ landlord.email_address}}</p>
+
+<!-- <p><a class="btn btn-warning" href="{ % url 'rental_app:landlord_update' pk=new_landlord.pk % }">Update</a></p> -->
+
+
+{% endfor %}
+
+{% for property in rentalproperty_list %}
+<p>landlord name: {{ property.landlord}}</p>
+<p>created_by: {{ property.created_by}}</p>
+<p>Type of property: {{ property.type_of_property_listing }}</p>
+<p>Type of property: {{ property.type_of_building_choices }}</p>
+<p>Streets: {{ property.street }}</p>
+<p>Borough: {{ property.borough }}</p>
+<p>Postal code : {{ property.postal_code }}</p>
+<p>City: {{ property.city }}</p>
+<p>Province: {{ property.province }}</p>
+<p>Country: {{ property.country }}</p>
+{% endfor %}
+
+{% for apartmentinfo in apartmentbasicinfo_list %}
+<p>apartmentinfo: {{apartmentinfo.title }}</p>
+<p>Rental property: {{ apartmentinfo.rental_property }}</p>
+<p>Created at: {{apartmentinfo.created_at}}</p>
+<p>Living area {{apartmentinfo.living_area}}</p>
+<p>Number of rooms: {{apartmentinfo.number_of_rooms}}</p>
+<p>Floor: {{apartmentinfo.floors}}</p>
+<p>Furnished: {{apartmentinfo.furnished}}</p>
+<p>Type of kitchen: {{apartmentinfo.type_of_kitchen_choices}}</p>
+<p>Sauna: {{apartmentinfo.sauna}}</p>
+<p>Balcony: {{apartmentinfo.balcony}}</p>
+<p>Apartment layout type: {{apartmentinfo.apartment_layout_type}}</p>
+<p>Apartment conditions: {{apartmentinfo.apartment_condition}}</p>
+<p>Apartment conditions Freetext: {{apartmentinfo.apartment_conditions_freetext}}</p>
+<p>Pictures: {{apartmentinfo.title}} alt=""></p>
+<p>Video Link: <a href="{{apartmentinfo.video}}">Video link</a></p>
+{% endfor %}
+
+
+
+{% for contract in contract_list %}
+<p>Rental property: {{ contract.rental_property }}</p>
+<p>User: {{ contract.user }}</p>
+<p>Rental terms: {{ contract.type_of_rental_terms }}</p>
+<p>Rental availability: {{ contract.rent_availability }}</p>
+<p>Rental availability Info: {{ contract.rent_availability_info }}</p>
+<p>Rent per month: {{ contract.rent_per_month }}</p>
+<p>Rent deposit: {{ contract.deposit_for_rent }}</p>
+<p>Rent deposit info: {{ contract.deposit_for_rent_info }}</p>
+<p>Rental increment: {{ contract.rental_increment }}</p>
+<p>Index Value: {{ contract.index_value }}</p>
+<p>Index date: {{ contract.index_date}}</p>
+<p>Rent electricity: {{ contract.rent_electricity }}</p>
+<p>Electricity fixed fee: {{ contract.electricity_fixed_fee }}</p>
+<p>Water fee: {{ contract.water_fee }}</p>
+<p>Water fee per person: {{ contract.water_fee_per_person }}</p>
+<p>Heating fee {{ contract.heating_fee }}</p>
+<p>Heating fixed fee: {{ contract.heating_fixed_fee}}</p>
+<p>Other cost: {{ contract.Other_cost }}</p>
+<p>Pets allowed: {{contract.pets_allowed }}</p>
+<p>Smoking allowed: {{ contract.smoking_allowed }}</p>
+<p>Insurance: {{ contract.insurance_required }}</p>
+<p>Other terms: {{ contract.other_terms }}</p>
+{% endfor %}
+
+
+
+
+</div>
+{% endblock %}

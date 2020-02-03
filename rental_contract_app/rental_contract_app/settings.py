@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'rental_app',
     'accounts',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
@@ -126,6 +127,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = 'test'
-LOGOUT_REDIRECT_URL = 'thanks'
+LOGIN_REDIRECT_URL = 'rental_app:test'
+LOGOUT_REDIRECT_URL = 'rental_app:thanks'

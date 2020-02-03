@@ -1,7 +1,26 @@
 from django import forms
-from .models import Landlord
+from . import models
 
-class CreateNewPropertyForm(forms.ModelForm):
+class CreateLandlordForm(forms.ModelForm):
     class Meta:
-        model = Landlord
-        fields = ['address', 'social_security_number', 'email_address']
+        model = models.Landlord
+        exclude = ['user']
+
+
+
+class CreateRentalPropertyForm(forms.ModelForm):
+    class Meta:
+        model = models.RentalProperty
+        exclude = ['landlord','created_by']
+
+class CreateApartmentBasicInfoForm(forms.ModelForm):
+    class Meta: 
+        model = models.ApartmentBasicInfo
+        exclude = ['apartment_pictures', 'video']
+
+class CreateContractForm(forms.ModelForm):
+    class Meta:
+        model = models.Contract 
+        exclude = ['_all_']
+
+

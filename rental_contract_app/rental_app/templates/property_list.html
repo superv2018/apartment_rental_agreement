@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1> Welcome to Rental App</h1>
+    <h2>Property title list</h2>
+    
+    {% if apartmentbasicinfo_list %}
+    <ul>
+        {% for apartmentinfo in apartmentbasicinfo_list %}
+      
+        <h3>
+            <li> 
+                <a href="{% url 'rental_app:property_detail' pk=apartmentinfo.pk %}">User: {{ apartmentinfo.title}}</a>
+                <button ><a href="{% url 'rental_app:rental_update' pk=apartmentinfo.pk %}">Update</a></button>
+            </li>
+        </h3>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are no apartment listing here</p>
+    {% endif %}
+    
+{% endblock %}

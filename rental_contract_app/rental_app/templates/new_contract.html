@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<h1>This is Contract Page</h1>
+<div>
+<form class="container" action="" method="post">
+  
+    {% csrf_token %}
+    {% include 'includes/form.html' %} 
+
+    <a class="btn btn-primary" href="{% url 'rental_app:new_apartment_info' %}">Back</a>
+    <input type="submit" value="submit">
+  </form>
+</div>
+{% endblock %}
